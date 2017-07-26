@@ -1,0 +1,137 @@
+package com.java1234.controller;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.java1234.entity.CusDevPlan;
+import com.java1234.service.CusDevPlanService;
+import com.java1234.service.SaleChanceService;
+
+/**
+ * <p>
+ * Title: CusDevPlanController
+ * </p>
+ * <p>
+ * Description: 客户开发计划界面操作
+ * </p>
+ * 
+ * @author PeiYing.Guo
+ * @date 2016年6月21日下午2:34:52
+ * @version 1.2
+ */
+@Controller
+@RequestMapping("/cusDevPlan")
+public class CusDevPlanController {
+
+    @Resource
+    private CusDevPlanService cusDevPlanService;
+
+    @Resource
+    private SaleChanceService saleChanceService;
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class,
+                new CustomDateEditor(dateFormat, true)); // true:允许输入空值，false:不能为空值
+    }
+
+    /**
+     * 查询客户开发计划集合
+     * 
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/list")
+    @ResponseBody
+    public String list(
+            @RequestParam(value = "saleChanceId") String saleChanceId,
+            HttpServletResponse response) throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, List<CusDevPlan>> result = new HashMap<>();
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("saleChanceId", saleChanceId);
+        List<CusDevPlan> cusDevPlanList = cusDevPlanService.findCusDevPlan(map);
+        result.put("rows", cusDevPlanList);
+        return mapper.writeValueAsString(result);
+
+    }
+
+    /**
+     * 添加客户开发计划项
+     * 
+     * @param cusDevPlan
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/save")
+    @ResponseBody
+    public String save(CusDevPlan cusDevPlan, HttpServletResponse response)
+            throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Boolean> result = new HashMap<>();
+
+        
+        
+        int resultTotal = 0; // 操作的记录条数
+        if (cusDevPlan.getId() == null) {
+            Map<String, Object> map = new HashMap<String, Object>();
+            map.put("id", cusDevPlan.getSaleChance().getId());
+            map.put("devResult", 1); // 状态修改成“开发中”
+            saleChanceService.updateSaleChanceDevResult(map);
+            resultTotal = cusDevPlanService.addCusDevPlan(cusDevPlan);
+        } else {
+            resultTotal = cusDevPlanService.updateCusDevPlan(cusDevPlan);
+        }
+        if (resultTotal > 0) { // 执行成功
+            result.put("success", true);
+        } else {
+            result.put("success", false);
+        }
+        return mapper.writeValueAsString(result);
+
+        // 将json的格式转换成jackson格式
+        // JSONObject result = new JSONObject();
+        // ResponseUtil.write(response, result);
+        // return null;
+    }
+
+    /**
+     * 删除销售机会
+     * 
+     * @param id
+     * @param response
+     * @return
+     * @throws Exception
+     */
+    @RequestMapping("/delete")
+    @ResponseBody
+    public String delete(@RequestParam(value = "id") String id,
+            HttpServletResponse response) throws Exception {
+        cusDevPlanService.deleteCusDevPlan(Integer.parseInt(id));
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, Boolean> result = new HashMap<>();
+        result.put("success", true);
+        return mapper.writeValueAsString(result);
+
+        // 将json的格式转换成jackson格式
+        // JSONObject result = new JSONObject();
+        // ResponseUtil.write(response, result);
+        // return null;
+    }
+}

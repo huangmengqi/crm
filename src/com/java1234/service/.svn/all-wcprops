@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/java201501Svn/!svn/ver/121/CRM/src/com/java1234/service
+END
+UserService.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/UserService.java
+END
+ProductService.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/ProductService.java
+END
+CustomerService.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/CustomerService.java
+END
+OrderDetailsService.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/OrderDetailsService.java
+END
+CustomerLossService.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/CustomerLossService.java
+END
+CustomerServiceService.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/CustomerServiceService.java
+END
+CustomerReprieveService.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/CustomerReprieveService.java
+END
+CusDevPlanService.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/CusDevPlanService.java
+END
+SaleChanceService.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/SaleChanceService.java
+END
+DataDicService.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/java201501Svn/!svn/ver/392/CRM/src/com/java1234/service/DataDicService.java
+END
+LinkManService.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/LinkManService.java
+END
+ContactService.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/ContactService.java
+END
+OrderService.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/OrderService.java
+END

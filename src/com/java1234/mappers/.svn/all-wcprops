@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/java201501Svn/!svn/ver/121/CRM/src/com/java1234/mappers
+END
+ContactMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/java201501Svn/!svn/ver/557/CRM/src/com/java1234/mappers/ContactMapper.xml
+END
+OrderMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/java201501Svn/!svn/ver/121/CRM/src/com/java1234/mappers/OrderMapper.xml
+END
+UserMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/java201501Svn/!svn/ver/121/CRM/src/com/java1234/mappers/UserMapper.xml
+END
+ProductMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/java201501Svn/!svn/ver/121/CRM/src/com/java1234/mappers/ProductMapper.xml
+END
+CustomerMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/java201501Svn/!svn/ver/121/CRM/src/com/java1234/mappers/CustomerMapper.xml
+END
+OrderDetailsMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/java201501Svn/!svn/ver/121/CRM/src/com/java1234/mappers/OrderDetailsMapper.xml
+END
+CustomerLossMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/java201501Svn/!svn/ver/121/CRM/src/com/java1234/mappers/CustomerLossMapper.xml
+END
+CustomerServiceMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/java201501Svn/!svn/ver/121/CRM/src/com/java1234/mappers/CustomerServiceMapper.xml
+END
+CustomerReprieveMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/java201501Svn/!svn/ver/121/CRM/src/com/java1234/mappers/CustomerReprieveMapper.xml
+END
+CusDevPlanMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/java201501Svn/!svn/ver/121/CRM/src/com/java1234/mappers/CusDevPlanMapper.xml
+END
+SaleChanceMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/java201501Svn/!svn/ver/121/CRM/src/com/java1234/mappers/SaleChanceMapper.xml
+END
+DataDicMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/java201501Svn/!svn/ver/121/CRM/src/com/java1234/mappers/DataDicMapper.xml
+END
+LinkManMapper.xml
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/java201501Svn/!svn/ver/121/CRM/src/com/java1234/mappers/LinkManMapper.xml
+END

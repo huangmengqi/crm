@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<beans xmlns="http://www.springframework.org/schema/beans"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:aop="http://www.springframework.org/schema/aop"   
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:jee="http://www.springframework.org/schema/jee"  
+    xmlns:tx="http://www.springframework.org/schema/tx"  
+    xsi:schemaLocation="    
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd  
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">    
+        
+	<!-- 自动扫描 -->
+	<context:component-scan base-package="com.java1234.dao" />
+	<context:component-scan base-package="com.java1234.service" />
+	
+	<!-- 配置数据源 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/db_crm"/>
+		<property name="username" value="root"/>
+		<property name="password" value="root"/>
+	</bean>
+
+	<!-- 配置mybatis的sqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<!-- 自动扫描mappers.xml文件 -->
+		<property name="mapperLocations" value="classpath:com/java1234/mappers/*.xml"></property>
+		<!-- mybatis配置文件 -->
+		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
+	</bean>
+
+	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.java1234.dao" />
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+	</bean>
+
+	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- 配置事务通知属性 -->  
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">  
+        <!-- 定义事务传播属性 -->  
+        <tx:attributes>
+<!--             1： <tx:method />里面的属性 -->
+			<!-- 属性      	是否需要？	 默认值	  描述 -->
+			<!-- name	          是	 	          与事务属性关联的方法名。通配符（*）可以用来指定一批关联到相同的事务属性的方法。 如：'get*'、'handle*'、'on*Event'等等。 -->
+			<!-- propagation	  不  	REQUIRED  事务传播行为 -->
+			<!-- isolation	      不	    DEFAULT	  事务隔离级别 -->
+			<!-- timeout     	  不	     -1	      事务超时的时间（以秒为单位） -->
+			<!-- read-only	      不	     false	  事务是否只读？ -->
+			<!-- rollback-for	  不	 	          将被触发进行回滚的 Exception(s)；以逗号分开。 如：'com.foo.MyBusinessException,ServletException' -->
+			<!-- no-rollback-for  不	 	          不被触发进行回滚的 Exception(s)；以逗号分开。 如：'com.foo.MyBusinessException -->
+<!--       2： 下面是Spring中Propagation类的事务属性详解：  -->
+<!-- 当前事务指的就是sessionFactory -->
+<!-- REQUIRED：支持当前事务，如果当前没有事务，就新建一个事务。这是最常见的选择。  -->
+
+<!-- SUPPORTS：支持当前事务，如果当前没有事务，就以非事务方式执行。  -->
+
+<!-- MANDATORY：支持当前事务，如果当前没有事务，就抛出异常。  -->
+
+<!-- REQUIRES_NEW：新建事务，如果当前存在事务，把当前事务挂起。  -->
+
+<!-- NOT_SUPPORTED：以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。  -->
+
+<!-- NEVER：以非事务方式执行，如果当前存在事务，则抛出异常。  -->
+
+<!-- NESTED：支持当前事务，如果当前事务存在，则执行一个嵌套事务，如果当前没有事务，就新建一个事务。     -->
+<!-- 3:最容易弄混淆的其实是 PROPAGATION_REQUIRES_NEW 和 PROPAGATION_NESTED 有何区别呢? 我简单的翻译一下 Juergen Hoeller 的话 :  -->
+    
+<!--     PROPAGATION_REQUIRES_NEW 启动一个新的, 不依赖于环境的 "内部" 事务. 这个事务将被完全 commited 或 rolled back 而不依赖于外部事务, 它拥有自己的隔离范围, 自己的锁, 等等. 当内部事务开始执行时, 外部事务将被挂起, 内务事务结束时, 外部事务将继续执行.  -->
+
+<!--     另一方面, PROPAGATION_NESTED 开始一个 "嵌套的" 事务,  它是已经存在事务的一个真正的子事务. 潜套事务开始执行时,  它将取得一个 savepoint. 如果这个嵌套事务失败, 我们将回滚到此 savepoint. 潜套事务是外部事务的一部分, 只有外部事务结束后它才会被提交.  -->
+
+<!--     由此可见, PROPAGATION_REQUIRES_NEW 和 PROPAGATION_NESTED 的最大区别在于, PROPAGATION_REQUIRES_NEW 完全是一个新的事务, 而 PROPAGATION_NESTED 则是外部事务的子事务, 如果外部事务 commit, 潜套事务也会被 commit, 这个规则同样适用于 roll back.      -->
+<!-- >>>>> 事务嵌套，方法本身就在事务中，而它又调用了需要事务处理的方法 -->
+            <tx:method name="insert*" propagation="REQUIRED" />  
+            <tx:method name="update*" propagation="REQUIRED" />  
+            <tx:method name="edit*" propagation="REQUIRED" />  
+            <tx:method name="save*" propagation="REQUIRED" />  
+            <tx:method name="add*" propagation="REQUIRED" />  
+            <tx:method name="new*" propagation="REQUIRED" />  
+            <tx:method name="set*" propagation="REQUIRED" />  
+            <tx:method name="remove*" propagation="REQUIRED" />  
+            <tx:method name="delete*" propagation="REQUIRED" />  
+            <tx:method name="change*" propagation="REQUIRED" />  
+            <tx:method name="check*" propagation="REQUIRED" />  
+            <tx:method name="get*" propagation="REQUIRED" read-only="true" />  
+            <tx:method name="find*" propagation="REQUIRED" read-only="true" />  
+            <tx:method name="load*" propagation="REQUIRED" read-only="true" />  
+            <tx:method name="*" propagation="REQUIRED" read-only="true" />  
+        </tx:attributes>  
+    </tx:advice>  
+
+    <!-- 配置事务切面 -->  
+    <!-- 那些类的哪些方法参与事务 -->
+    <aop:config>  
+        <aop:pointcut id="serviceOperation" expression="execution(* com.java1234.service.*.*(..))" />  
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation" />  
+    </aop:config>  
+    
+    <!-- 启动触发器的配置开始 -->  
+    <bean name="startQuertz" lazy-init="false" autowire="no"  
+        class="org.springframework.scheduling.quartz.SchedulerFactoryBean">  
+        <property name="triggers">  
+            <list>  
+                <ref bean="myJobTrigger" />  
+            </list>  
+        </property>  
+    </bean>  
+    
+    <bean id="myJobTrigger"  
+        class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">  
+        <property name="jobDetail">  
+            <ref bean="myJobDetail" />  
+        </property>  
+        <property name="cronExpression">  
+            <value>0 0 2 * * ?</value>  
+        </property>  
+    </bean>  
+    
+	<!-- job的配置开始 -->  
+    <bean id="myJobDetail"  
+        class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">  
+        <property name="targetObject">  
+            <ref bean="myJob" />  
+        </property>  
+        <property name="targetMethod">  
+            <value>work</value>  
+        </property>  
+    </bean>  
+    <!-- job的配置结束 -->  
+  
+    <!-- 工作的bean -->  
+    <bean id="myJob" class="com.java1234.quartz.FindLossCustomerJob" >
+    	<property name="customerService" ref="customerService"/>
+    </bean>  
+    
+</beans>

@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/java201501Svn/!svn/ver/121/CRM/src/com/java1234/service/impl
+END
+UserServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/impl/UserServiceImpl.java
+END
+ProductServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/impl/ProductServiceImpl.java
+END
+CustomerServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/impl/CustomerServiceImpl.java
+END
+OrderDetailsServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/impl/OrderDetailsServiceImpl.java
+END
+CustomerLossServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/impl/CustomerLossServiceImpl.java
+END
+CustomerServiceServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/impl/CustomerServiceServiceImpl.java
+END
+CustomerReprieveServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/impl/CustomerReprieveServiceImpl.java
+END
+CusDevPlanServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/impl/CusDevPlanServiceImpl.java
+END
+SaleChanceServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/impl/SaleChanceServiceImpl.java
+END
+DataDicServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/impl/DataDicServiceImpl.java
+END
+LinkManServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/impl/LinkManServiceImpl.java
+END
+ContactServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/impl/ContactServiceImpl.java
+END
+OrderServiceImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/java201501Svn/!svn/ver/122/CRM/src/com/java1234/service/impl/OrderServiceImpl.java
+END
